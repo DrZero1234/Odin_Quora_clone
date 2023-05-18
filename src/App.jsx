@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import logo from "./assets/logo.png"
+import { Like, Smile,Comment } from "./utils/icons";
 
 /*
 // Data Mock
@@ -29,6 +30,118 @@ Questions = [
 
 */
 
+const Post = () => {
+  return (
+    <div className="bg-white shadow-md border border-gray-200 rounded-lg max-w-sm mb-5 overflow-y-scroll ">
+      <div className="p-5 hover:cursor-pointer">
+        <a href="#">
+          <h5 className="text-gray-900 font-bold text-2xl tracking-tight mb-2">
+            Post title
+          </h5>
+        </a>
+        <p className="font-normal text-gray-700 mb-3">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Enim quibusdam non quam a deserunt odio amet consequatur
+          similique officiis ut fugit blanditiis obcaecati itaque
+          repellat asperiores architecto, distinctio assumenda eaque!
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+          Animi delectus quasi assumenda quam. Mollitia, laboriosam
+          asperiores perspiciatis nam officiis placeat iste animi,
+          reiciendis recusandae aliquid nisi corrupti cum. Voluptas,
+          ducimus?
+        </p>
+        <a href="#">
+          <img
+            className="rounded-t-lg"
+            src="https://flowbite.com/docs/images/blog/image-1.jpg"
+            alt=""
+          />
+        </a>
+      </div>
+      <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+      <div className="flex flex-row p-2.5 justify-around">
+        <div className="flex flex-row items-center gap-1.5 hover:cursor-pointer">
+          <h3>123</h3>
+          <div className="flex flex-col justify-center">
+            <div className="w-[36px] h-[36px]">{Like}</div>
+            <h3>Like</h3>
+          </div>
+        </div>
+        <div className="flex flex-row items-center gap-1.5 hover:cursor-pointer">
+          <h3>123</h3>
+          <div className="flex flex-col justify-center items-center">
+            <div className="w-[36px] h-[36px]">{Comment}</div>
+            <h3>Comment</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+const Posts = () => {
+  return (
+    <div className="max-w-lg mx-auto">
+      <div className="flex flex-col">
+        <Post />
+        <Post />
+      </div>
+    </div>
+  );
+}
+
+const Footer = () => {
+  return (
+    <footer className="bg-white rounded-lg shadow dark:bg-gray-900 m-4">
+      <div className="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+        <span className="block text-sm text-gray-500 sm:text-center dark:text-gray-400">
+          © 2023{" "}
+          <a href="https://flowbite.com/" className="hover:underline">
+            Flowbite™
+          </a>
+          . All Rights Reserved.
+        </span>
+      </div>
+    </footer>
+  );
+}
+
+const MainPage = () => {
+  return (
+    <div>
+      <div className="flex flex-row items-center">
+        <div>
+          <div className="relative w-12 h-12">
+            <img
+              className="rounded-full border border-gray-100 shadow-sm"
+              src="https://randomuser.me/api/portraits/women/81.jpg"
+              alt="user image"
+            />
+          </div>
+        </div>
+        <div className="bg-input-bg-grey text-input-text-black w-full p-2 rounded-full hover:text-input-bg-grey hover: hover:bg-input-text-black flex items-center hover:cursor-pointer">
+          Ask anything
+        </div>
+      </div>
+      <div className="flex flex-col items-start my-4">
+        Sort by
+        <div className="sort-table flex flex-row p-5 w-full gap-3 bg-red-300">
+          <button className="inline-flex items-center px-4 py-2 gap-2 bg-gray-200 hover:bg-gray-300 text-gray-800 text-sm font-medium rounded-md">
+            {Like}
+            Most liked
+          </button>
+
+          <button className="inline-flex items-center px-4 py-2 gap-2 bg-gray-200 hover:bg-gray-300 text-gray-800 text-sm font-medium rounded-md">
+            {Smile}
+            Funny
+          </button>
+        </div>
+      </div>
+      <Posts />
+    </div>
+  );
+}
+
 const Heading = () => {
   return (
     <header>
@@ -44,13 +157,7 @@ const Heading = () => {
               Quora clone
             </span>
           </a>
-          <div className="flex items-center lg:order-2 gap-2">
-            <button
-              href="#"
-              className="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800 border-blue-500"
-            >
-              Log in
-            </button>
+          <div className="flex items-center lg:order-2 gap-4">
             <div className="flex">
               <div className="relative w-12 h-12">
                 <img
@@ -58,14 +165,13 @@ const Heading = () => {
                   src="https://randomuser.me/api/portraits/women/81.jpg"
                   alt="user image"
                 />
-                <div className="absolute top-0 right-0 h-3 w-3 my-1 border-2 border-white rounded-full bg-red-400 z-2"></div>
               </div>
             </div>
             <a
               href="#"
               className="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
             >
-              Get started
+              Logout
             </a>
             <button
               data-collapse-toggle="mobile-menu-2"
@@ -120,7 +226,7 @@ const Heading = () => {
                   href="#"
                   className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
                 >
-                  Questions
+                  My posts
                 </a>
               </li>
             </ul>
@@ -133,8 +239,21 @@ const Heading = () => {
 
 function App() {
   return (
-    <Heading />
+    <>
+      <div className="container flex flex-col">
+        <div className="basis 1/4">
+          <Heading />
+        </div>
+        <div className="basis1/2 flex flex-col items-center gap-y-2">
+          <div className="w-3/6">
+            <MainPage />
+          </div>
+        </div>
+      </div>
+      <Footer />
+    </>
   );
 }
+
 
 export default App;
